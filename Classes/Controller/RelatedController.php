@@ -22,6 +22,7 @@ final class RelatedController extends ActionController
         $page = max(1, (int)($this->request->hasArgument('relatedPage') ? $this->request->getArgument('relatedPage') : 1));
         $parentIds = GeneralUtility::intExplode(',', (string)($this->settings['idsParentCategoryRelatedNews'] ?? ''), true);
         $results = $news ? $newsRepository->findRelatedQuery($news, $parentIds) : null;
+        $relatedTotal = $results ? count($results) : 0;
         $paginator = $results ? GeneralUtility::makeInstance(QueryResultPaginator::class, $results, $page, $size) : null;
         $pagination = $paginator ? GeneralUtility::makeInstance(SimplePagination::class, $paginator) : null;
 
@@ -33,6 +34,7 @@ final class RelatedController extends ActionController
             'relatedNews' => $paginator?->getPaginatedItems() ?? [],
             'relatedPaginator' => $paginator,
             'relatedPagination' => $pagination,
+            'relatedTotal' => $relatedTotal,
             'latestNews' => $latest,
             'newsUid' => $newsUid,
             'settings' => $this->settings,
