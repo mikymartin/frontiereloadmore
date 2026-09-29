@@ -36,6 +36,11 @@ di sistema dopo la sostituzione e provare il dettaglio prima del rilascio.
 La logica delle correlate e delle ultime news ora usa direttamente il repository
 di `news`, senza estendere il repository PHP di `newsenhanced`.
 
+**Aggiornamento alla 1.0.3:** il paginator per i risultati Extbase viene
+importato da `TYPO3\CMS\Extbase\Pagination`, come richiesto da TYPO3 13.4.
+La 1.0.2 lo cercava nel namespace `Core\Pagination` e interrompeva
+l'apertura del dettaglio news.
+
 ## Impostazioni
 
 Nel Template / Constant Editor, categoria `frontiereloadmore`:
