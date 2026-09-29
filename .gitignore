@@ -1,0 +1,11 @@
+/.build/
+/.ddev/
+/.idea/
+/composer.lock
+/config/
+/var/
+/vendor/
+.idea
+.idea/
+Tests
+/Build/

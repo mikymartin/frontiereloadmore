@@ -1,0 +1,68 @@
+<f:if condition="{news}">
+    <f:then>
+        <f:variable name="imageConfig">{settings.list.media.variants}</f:variable>
+        <bk2k:data.imageVariants as="variants" variants="{settings.responsiveimages.variants}" multiplier="{imageConfig.multiplier}" gutters="{imageConfig.gutters}" corrections="{imageConfig.corrections}" />
+        <polimi:data.imageVariantsCrops as="variants" variants="{variants}" crops="{settings.list.media.crops}" />
+        <f:switch expression="{settings.templateLayout}">
+            <f:case value="215"><f:render partial="Slider/NewsSlider" arguments="{_all}" /></f:case>
+            <f:case value="210"><f:render section="HeroNews" arguments="{news: news, settings: settings, variants: variants, level: 'zero'}" /></f:case>
+            <f:case value="220"><f:render section="HeroNews" arguments="{news: news, settings: settings, variants: variants, level: 'first'}" /></f:case>
+            <f:defaultCase>
+                <f:render section="DefaultNewsList" arguments="{news: news, settings: settings, variants: variants, pagination: pagination, contentObjectData: contentObjectData}" />
+            </f:defaultCase>
+        </f:switch>
+    </f:then>
+    <f:else>
+        <div class="no-news"><p><f:translate key="list_nonewsfound" extensionName="polimipackage" /></p></div>
+    </f:else>
+</f:if>
+
+<f:section name="HeroNews">
+    <f:for each="{news}" as="newsItem" iteration="iterator">
+        <f:render partial="List/Item" arguments="{newsItem: newsItem, settings: settings, iterator: iterator, variants: variants, level: level}" />
+    </f:for>
+</f:section>
+
+<f:section name="DefaultNewsList">
+    <div class="container">
+        <div class="row row--card" data-frontiere-items>
+            <f:if condition="{settings.hidePagination}">
+                <f:then>
+                    <f:for each="{news}" as="newsItem" iteration="iterator">
+                        <f:render partial="List/Item" arguments="{newsItem: newsItem, settings: settings, iterator: iterator, variants: variants}" />
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <f:if condition="{settings.loadMore.enabled} == 0">
+                        <f:if condition="{settings.list.paginate.insertAbove}">
+                            <f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+                        </f:if>
+                    </f:if>
+                    <f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+                        <f:render partial="List/Item" arguments="{newsItem: newsItem, settings: settings, iterator: iterator, variants: variants}" />
+                    </f:for>
+                    <f:if condition="{settings.loadMore.enabled} == 0">
+                        <f:if condition="{settings.list.paginate.insertBelow}">
+                            <f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+                        </f:if>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </div>
+        <f:if condition="{settings.loadMore.enabled}">
+            <f:if condition="{pagination.paginator}">
+                <div class="frontiere-load-more" data-frontiere-load-more data-frontiere-instance="news-{contentObjectData.uid}" data-frontiere-page="{pagination.paginator.currentPageNumber}" data-frontiere-total="{pagination.paginator.totalNumberOfItems}" data-frontiere-page-size="{settings.list.paginate.itemsPerPage}">
+                    <f:if condition="{pagination.pagination.nextPageNumber}">
+                        <a class="frontiere-load-more__button" data-frontiere-next href="{f:uri.action(action:'list', arguments:{currentPage: pagination.pagination.nextPageNumber}, addQueryString:'untrusted')}">Vedi altro</a>
+                    </f:if>
+                    <f:if condition="{settings.loadMore.showCount}">
+                        <p class="frontiere-load-more__count" data-frontiere-count aria-live="polite"><f:count subject="{pagination.paginator.paginatedItems}" /> di {pagination.paginator.totalNumberOfItems}</p>
+                    </f:if>
+                    <span class="visually-hidden" data-frontiere-status role="status" aria-live="polite"></span>
+                </div>
+                <f:asset.css identifier="frontiereloadmore" href="EXT:frontiereloadmore/Resources/Public/Css/load-more.css" />
+                <f:asset.script identifier="frontiereloadmore" src="EXT:frontiereloadmore/Resources/Public/JavaScript/load-more.js" />
+            </f:if>
+        </f:if>
+    </div>
+</f:section>

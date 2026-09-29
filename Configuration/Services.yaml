@@ -1,0 +1,16 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Polimi\Frontiereloadmore\:
+    resource: '../Classes/*'
+
+  # Extbase resolves the controller by its fully qualified class name.
+  Polimi\Frontiereloadmore\Controller\RelatedController:
+    public: true
+
+  # The controller currently obtains this repository with makeInstance().
+  Polimi\Frontiereloadmore\Domain\Repository\RelatedNewsRepository:
+    public: true

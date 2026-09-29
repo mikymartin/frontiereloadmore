@@ -1,0 +1,15 @@
+{
+  "name": "polimi/frontiereloadmore",
+  "description": "Progressive load-more pagination for Frontiere news lists and related news",
+  "type": "typo3-cms-extension",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": "^8.2",
+    "typo3/cms-core": "^13.4",
+    "georgringer/news": "^12.3",
+    "polimi/frontieretema": "*",
+    "polimi/newsenhanced": "*"
+  },
+  "autoload": {"psr-4": {"Polimi\\Frontiereloadmore\\": "Classes/"}},
+  "extra": {"typo3/cms": {"extension-key": "frontiereloadmore"}}
+}

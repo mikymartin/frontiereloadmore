@@ -1,0 +1,8 @@
+plugin.tx_frontiereloadmore {
+    # cat=frontiereloadmore/enable/010; type=boolean; label=Abilita Vedi altro (liste e correlate)
+    enabled = 1
+    # cat=frontiereloadmore/display/020; type=int+; label=News per caricamento (anche correlate)
+    itemsPerPage = 9
+    # cat=frontiereloadmore/display/030; type=boolean; label=Mostra il conteggio (es. 27 di 50)
+    showCount = 1
+}

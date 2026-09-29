@@ -1,0 +1,27 @@
+.frontiere-load-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem 0;
+    color: #102c53;
+}
+.frontiere-load-more__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 44px;
+    padding: .7rem 1.5rem;
+    color: #fff;
+    background: #2942db;
+    border-radius: 0;
+    font-weight: 700;
+    text-decoration: none;
+}
+.frontiere-load-more__button:hover,
+.frontiere-load-more__button:focus-visible { color: #fff; background: #1c34c8; }
+.frontiere-load-more__button:focus-visible { outline: 3px solid #102c53; outline-offset: 3px; }
+.frontiere-load-more__button[aria-disabled="true"] { opacity: .6; cursor: wait; }
+.frontiere-load-more__count { margin: 0; font-size: .95rem; }
+.frontiere-load-more:empty { display: none; }
