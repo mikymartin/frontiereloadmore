@@ -51,12 +51,12 @@
         </div>
         <f:if condition="{settings.loadMore.enabled}">
             <f:if condition="{pagination.paginator}">
-                <div class="frontiere-load-more" data-frontiere-load-more data-frontiere-instance="news-{contentObjectData.uid}" data-frontiere-page="{pagination.paginator.currentPageNumber}" data-frontiere-total="{pagination.paginator.totalNumberOfItems}" data-frontiere-page-size="{settings.list.paginate.itemsPerPage}">
+                <div class="frontiere-load-more" data-frontiere-load-more data-frontiere-instance="news-{contentObjectData.uid}" data-frontiere-page="{pagination.paginator.currentPageNumber}" data-frontiere-total="{f:count(subject: news)}" data-frontiere-page-size="{settings.list.paginate.itemsPerPage}">
                     <f:if condition="{pagination.pagination.nextPageNumber}">
                         <a class="frontiere-load-more__button" data-frontiere-next href="{f:uri.action(action:'list', arguments:{currentPage: pagination.pagination.nextPageNumber}, addQueryString:'untrusted')}">Vedi altro</a>
                     </f:if>
                     <f:if condition="{settings.loadMore.showCount}">
-                        <p class="frontiere-load-more__count" data-frontiere-count aria-live="polite"><f:count subject="{pagination.paginator.paginatedItems}" /> di {pagination.paginator.totalNumberOfItems}</p>
+                        <p class="frontiere-load-more__count" data-frontiere-count aria-live="polite"><f:count subject="{pagination.paginator.paginatedItems}" /> di <f:count subject="{news}" /></p>
                     </f:if>
                     <span class="visually-hidden" data-frontiere-status role="status" aria-live="polite"></span>
                 </div>
