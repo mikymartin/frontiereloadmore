@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace Polimi\Frontiereloadmore\Controller;
 
 use Polimi\Frontiereloadmore\Domain\Repository\RelatedNewsRepository;
-use TYPO3\CMS\Core\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use Psr\Http\Message\ResponseInterface;
 
 final class RelatedController extends ActionController
