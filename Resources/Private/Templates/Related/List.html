@@ -23,12 +23,12 @@
                         <div class="swiper-pagination swiper-pagination-2 swiper-pagination-progressbar" data-frontiere-progress></div>
                         <f:link.page pageUid="32" class="btn btn-primary btn-dark allnews ml-auto"><span>Leggi tutte</span></f:link.page>
                     </div>
-                    <div class="frontiere-load-more" data-frontiere-load-more data-frontiere-instance="related-{newsUid}" data-frontiere-page="{relatedPaginator.currentPageNumber}" data-frontiere-total="{relatedPaginator.totalNumberOfItems}" data-frontiere-page-size="{settings.itemsPerPage}">
+                    <div class="frontiere-load-more" data-frontiere-load-more data-frontiere-instance="related-{newsUid}" data-frontiere-page="{relatedPaginator.currentPageNumber}" data-frontiere-total="{relatedTotal}" data-frontiere-page-size="{settings.itemsPerPage}">
                         <f:if condition="{relatedPagination.nextPageNumber}">
                             <a class="frontiere-load-more__button" data-frontiere-next href="{f:uri.action(action:'list', controller:'Related', arguments:{relatedPage: relatedPagination.nextPageNumber}, addQueryString:'untrusted')}">Vedi altro</a>
                         </f:if>
                         <f:if condition="{settings.showCount}">
-                            <p class="frontiere-load-more__count" data-frontiere-count aria-live="polite"><f:count subject="{relatedNews}" /> di {relatedPaginator.totalNumberOfItems}</p>
+                            <p class="frontiere-load-more__count" data-frontiere-count aria-live="polite"><f:count subject="{relatedNews}" /> di {relatedTotal}</p>
                         </f:if>
                         <span class="visually-hidden" data-frontiere-status role="status" aria-live="polite"></span>
                     </div>
