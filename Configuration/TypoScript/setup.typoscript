@@ -1,4 +1,4 @@
-# Include this static TypoScript AFTER frontieretema and newsenhanced.
+# Include this static TypoScript AFTER frontieretema and news.
 [{$plugin.tx_frontiereloadmore.enabled}]
 plugin.tx_news {
     view.partialRootPaths.30 = EXT:frontiereloadmore/Resources/Private/Partials/News/
@@ -10,23 +10,4 @@ plugin.tx_news {
     }
 }
 
-plugin.tx_frontiereloadmore_related {
-    view {
-        templateRootPaths.10 = EXT:frontiereloadmore/Resources/Private/Templates/
-        partialRootPaths.10 = EXT:frontieretema/Resources/Private/Partials/Extensions/Newsenhanced/
-        layoutRootPaths.10 = EXT:frontieretema/Resources/Private/Layouts/Extensions/Newsenhanced/
-    }
-    settings {
-        itemsPerPage = {$plugin.tx_frontiereloadmore.itemsPerPage}
-        showCount = {$plugin.tx_frontiereloadmore.showCount}
-        maxNumberLatestNews = {$plugin.tx_newsenhanced_newscarousels.maxNumberLatestNews}
-        idsParentCategoryRelatedNews = {$plugin.tx_newsenhanced_newscarousels.idsParentCategoryRelatedNews}
-    }
-}
-lib.tx_frontiereloadmore_related = EXTBASEPLUGIN
-lib.tx_frontiereloadmore_related {
-    extensionName = Frontiereloadmore
-    pluginName = Related
-}
-lib.tx_newsenhanced < lib.tx_frontiereloadmore_related
 [/]
